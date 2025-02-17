@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+### `Giới thiệu hook useState`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+\_ chức năng giúp cho functional component có thể sử dụng được state
 
-## Available Scripts
+nó là 1 cái hàm input là intialState (giá trị mặc định)
+output là một cái mảng có state và một cái hàm giúp mình cập nhật lại cái state
 
-In the project directory, you can run:
+\_Đối với class component khi tạo state sẽ this.state trong constructor
+bên class là object chứa nhiều state
 
-### `yarn start`
+\_ lưu useState() sử dụng replacing thay vì merging
+có nghĩa nếu merging thì khi setState thì nó sẽ truyền đứa thay đổi
+và in ra đứa đó với thuộc tính thay đổi
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+\_nhưng với replacing thì khi truyền đứa bị thay đổi thì nó lấy mỗi đứa
+bị thay đổi thôi
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+thì trong function component thì nó sẽ là replacing
+còn trong class component thì nó sẽ là merging
 
-### `yarn test`
+nếu trong funtion muốn biến từ replacing sang merging
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+thì mình lấy thêm thằng cũ
 
-### `yarn build`
+### ví dụ const [person , setPerson] = useState({name: 'Hau' , color : 'red'})
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### setPerson({...person , color: 'green'})
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+----> {name: 'hau' , color: 'green'}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Thằng inital state chỉ dùng cho lần đầu , những lần sau nó bị bỏ rơi`
 
-### `yarn eject`
+ví dụ const [color , setColor] = useState(initColor)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### nếu như lần đầu tiên render thằng color được set bằng initColor
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### qua lần thứ 2 thằng initcolor không còn ý nghĩa gì
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+thế nên mình nên vỏ nó là 1 cái callBack
+const [color , setColor] = useState(() =>{
+const initColor = getComplicated();
+return initColor
+đảm bảo chỉ render đúng lần đầu tiên
+nếu con số hay chuỗi gì không đáng ngại
+nếu tính toán thì mình nên bỏ vào callBack cho nó chạy đúng 1 lần thôi
+})
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### `nếu để chế độ strictmode thì nó sẽ chạy 2 lần`
