@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.scss";
 import ColorBox from "./components/ColorBox";
 import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -23,12 +24,27 @@ function App() {
     newTodoList.splice(index, 1);
     setTodoList(newTodoList);
   }
+
+  function handleTodoFormSubmit(formValues) {
+    console.log("Form submit: ", formValues);
+    // add new todo to current todo list
+    const newTodo = {
+      id: todoList.length + 1,
+      ...formValues,
+    };
+    const newTodoList = [...todoList];
+    newTodoList.push(newTodo);
+    setTodoList(newTodoList);
+  }
+
   return (
     // component tolist có 2 thuộc tính đó là todos và onTodoClick
     // 2 thuộc tính đó thì todos đảm nhiệm việc render dữ liệu
     // còn onTodoClick giúp xử lí khi lick
     <div className="app">
       <h1>WELCOME TO REACT HOOKS BASIC</h1>
+
+      <TodoForm onSubmit={handleTodoFormSubmit} />
       <TodoList todos={todoList} onTodoClick={handleTodoClick} />
     </div>
   );
