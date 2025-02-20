@@ -46,3 +46,46 @@ nếu tính toán thì mình nên bỏ vào callBack cho nó chạy đúng 1 l�
 })
 
 ### `nếu để chế độ strictmode thì nó sẽ chạy 2 lần`
+
+---
+
+### `Những điều cần biết về useEffect() hook`
+
+Presented by: Hau Nguyen | Easy Frontend
+. `Side effect` là gì? Có bao nhiêu loại?
+. Giới thiệu hook `useEffect()`
+. Dùng `useEffect()` kèm điều kiện
+. Dùng `useEffect()` không có cleanup
+. Dùng `useEffect()` có cleanup
+. Chuyển từ life cycles sang useEffect() hook
+. 📝 Những lưu ý cần nhớ
+. Next step
+
+1. `Side effects` là gì? Có bao nhiêu loại?
+   Side effects là những thứ nằm bên ngoài component của mình
+   Gọi API lấy dữ liệu.
+   Tương tác với DOM.
+   Subscriptions.
+   setTimeout, setInterval.
+   Theo tài liệu chính thức thì chia làm 2 loại side effects:
+   . Effects `không cần clean up`: gọi API, tương tác DOM
+   . Effects `cần clean up`: subscriptions, setTimeout, setInterval.
+   nếu nó vẫn tiếp tục chạy thì nó sẽ xảy ra lỗi
+   Ref: https://reactjs.org/docs/hooks-effect.html
+2. Giới thiệu hook `useEffect()`
+   Là một hook cơ bản trong React hooks.
+   Sử dụng cho side effects.
+   Mỗi hook gồm 2 phần: side effect và clean up (optional)
+   Được thực thi sau mỗi lần render.
+   Được thực thi ít nhất một lần sau lần render đầu tiên.
+   Những lần render sau, chỉ được thực thi nếu có dependencies thay đổi.
+   Effect cleanup sẽ được thực thi trước run effect lần tiếp theo hoặc unmount.
+
+   trường hợp đầu tiên là không có dependencies : thì ý nghĩa là
+   nó luôn luôn được thực hiện sau mỗi lần render
+
+   trường hợp 2 : nếu như bạn để một cái mảng empty : tức là bạn muốn
+   chạy đúng 1 lần sau lần render đầu tiên
+
+   trường hợp 3 : nếu như dependencies nếu có dữ liêu thì : nếu filters
+   này thay đổi thì nó mới thực hiện
