@@ -89,3 +89,8 @@ Presented by: Hau Nguyen | Easy Frontend
 
    trường hợp 3 : nếu như dependencies nếu có dữ liêu thì : nếu filters
    này thay đổi thì nó mới thực hiện
+
+## debounce là gì
+
+`Khi sự kiện liên tục xảy ra, debounce sẽ hủy bỏ các lần gọi trước đó và chỉ thực thi hàm sau một khoảng thời gian xác định kể từ lần cuối sự kiện diễn ra.`
+`Nếu sự kiện xảy ra trước khi khoảng thời gian này kết thúc, bộ đếm thời gian sẽ được đặt lại. `

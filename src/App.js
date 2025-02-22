@@ -6,6 +6,7 @@ import TodoForm from "./components/TodoForm";
 import PostList from "./components/PostList";
 import Pagination from "./components/pagination";
 import queryString from "query-string";
+import PostFilterForm from "./components/PostFilterForm";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -84,6 +85,16 @@ function App() {
     setTodoList(newTodoList);
   }
 
+  const handleFilterChange = (newFilters) => {
+    console.log("new filter: ", newFilters);
+    //  set lại trang gồm các filter giống tên nhập trong input
+    setFilter({
+      ...filters, // lấy ra những thằng cũ
+      _page: 1, // filter mới không tới trang 2 trang 3 nên reset luôn
+      title_like: newFilters.searchTerm, // tìm những bài post có nội dung có nội dung của mình
+    });
+  };
+
   return (
     // component tolist có 2 thuộc tính đó là todos và onTodoClick
     // 2 thuộc tính đó thì todos đảm nhiệm việc render dữ liệu
@@ -93,6 +104,8 @@ function App() {
 
       {/* <TodoForm onSubmit={handleTodoFormSubmit} /> */}
       {/* <TodoList todos={todoList} onTodoClick={handleTodoClick} /> */}
+
+      <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
     </div>
