@@ -1,5 +1,5 @@
 import React from "react";
-import useClock from "../hooks/useClock";
+import useClock from "../../hooks/useClock";
 import "./BetterClock.scss";
 BetterClock.propTypes = {};
 

@@ -104,3 +104,18 @@ Presented by: Hau Nguyen | Easy Frontend
 `function component return jsx đối với hook return về data`
 
 `custom hook giống function cho phếp xài các hook thay vì function component thì nó sẽ return jsx thì thằng custom hook sẽ trả về data`
+
+## memozation và react.memo
+
+`Memoization : kĩ thuật giúp mình tăng tốc xử lí máy tính lên bằng các `
+`lưu những dữ liệu từ những lần tính toán trước đó  đó là kĩ thuật ghi nhớ `
+`thường dùng cho expensive function`
+
+`REACT.memo() không phải là hook mà 1 (HOC): higher order component `
+`REACT.memo() giống như pureComponent nhưng REACT.memo cho function Component còn pureComponent sử dụng class component`
+
+mục đích dùng render component nếu như prop thay đổi sử dụng shadow comparison
+
+thực chất React.memo cũng sử dụng memorization
+ý nghĩa nếu prop không thay đổi thì nó render và nó lưu lại kết quả đáy
+lát nó thấy prop y chang prop cũ không ko render mà nó sử dung kết quả render lần trước đấy
