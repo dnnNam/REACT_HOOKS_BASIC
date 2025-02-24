@@ -94,3 +94,13 @@ Presented by: Hau Nguyen | Easy Frontend
 
 `Khi sự kiện liên tục xảy ra, debounce sẽ hủy bỏ các lần gọi trước đó và chỉ thực thi hàm sau một khoảng thời gian xác định kể từ lần cuối sự kiện diễn ra.`
 `Nếu sự kiện xảy ra trước khi khoảng thời gian này kết thúc, bộ đếm thời gian sẽ được đặt lại. `
+
+## Custom hooks là gì
+
+`như đã biết trong react có các hook useState useEffect useRef mà thằng react đã định nghĩa ròi nhưng có thể tự định nghĩa cho riêng mình `
+
+`custom hook có thể sử dụng được những hook cách đặt tên use gì cũng được `
+
+`function component return jsx đối với hook return về data`
+
+`custom hook giống function cho phếp xài các hook thay vì function component thì nó sẽ return jsx thì thằng custom hook sẽ trả về data`

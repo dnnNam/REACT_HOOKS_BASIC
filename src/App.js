@@ -8,6 +8,7 @@ import Pagination from "./components/pagination";
 import queryString from "query-string";
 import PostFilterForm from "./components/PostFilterForm";
 import Clock from "./components/Clock";
+import BetterClock from "./components/BetterClock";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -110,6 +111,7 @@ function App() {
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} /> */}
       {showClock && <Clock />}
+      <BetterClock />
       <button
         onClick={() => {
           setShowClock(false);
