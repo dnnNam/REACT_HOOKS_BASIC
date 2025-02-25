@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.scss";
 import Hero from "./components/Hero";
+import Counter from "./components/Counter";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,10 +11,12 @@ function App() {
 
   return (
     <div className="app">
-      {<h1> React hooks</h1>}
+      {/* {<h1> React hooks</h1>}
       <p> {count}</p>
       <button onClick={() => setCount(count + 1)}>Increase</button>
-      <Hero name="Easy Frontend" onClick={handleHeroClick} />
+      <Hero name="Easy Frontend" onClick={handleHeroClick} /> */}
+
+      <Counter />
     </div>
   );
 }

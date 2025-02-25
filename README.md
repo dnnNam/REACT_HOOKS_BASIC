@@ -119,3 +119,16 @@ mục đích dùng render component nếu như prop thay đổi sử dụng shad
 thực chất React.memo cũng sử dụng memorization
 ý nghĩa nếu prop không thay đổi thì nó render và nó lưu lại kết quả đáy
 lát nó thấy prop y chang prop cũ không ko render mà nó sử dung kết quả render lần trước đấy
+
+## useCallBack()
+
+`UseCallBack()`: là một react hooks giúp mình tạo ra một memorizied callBack tạo mới khi dependencies trả về một callBack
+
+`useMemo()`: giống useCallBack thay vì trả về 1 callBacl nó lại trả vè 1 giá trị
+
+nếu component render đồ thị anomination nặng lúc đó thì nên sử dụng
+useMemo() hay useCallBack() nó là microImprovement
+
+## Giữ state trước đó của 1 state
+
+dùng `useRef` để bảo toàn giá trị dù cho nó bị re-render lại
